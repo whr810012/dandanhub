@@ -13,11 +13,6 @@
     Cross-Origin-Resource-Policy = "same-origin"
 
 [[redirects]]
-  from = "/pindou"
-  to = "/pindou/"
-  status = 301
-
-[[redirects]]
   from = "/home"
   to = "/pindou/home"
   status = 301
@@ -81,6 +76,19 @@
   from = "/static/*"
   to = "/pindou/static/:splat"
   status = 301
+
+# /pindou 与 /pindou/ 都要显式代理；/pindou/* 匹配不到空路径
+[[redirects]]
+  from = "/pindou"
+  to = "https://dandanpindou.netlify.app/pindou/"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/pindou/"
+  to = "https://dandanpindou.netlify.app/pindou/"
+  status = 200
+  force = true
 
 [[redirects]]
   from = "/pindou/*"
