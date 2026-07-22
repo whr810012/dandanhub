@@ -1,0 +1,22 @@
+@use 'sass:color';
+
+@function hub-darken($base, $amount) {
+  @return color.adjust($base, $lightness: -$amount);
+}
+
+$hub-primary: #5969df;
+$hub-primary-light: #eef1fc;
+$hub-accent: #eb805e;
+$hub-bg: #f0ebe3;
+$hub-card: #fffcf8;
+$hub-text: #202032;
+$hub-text-secondary: #5c5650;
+$hub-text-muted: #8a837a;
+$hub-border: #ddd6cb;
+$hub-font-display: 'Outfit', 'Noto Sans SC', sans-serif;
+$hub-font-body: 'Noto Sans SC', 'Outfit', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+$hub-content-wide: 1180px;
+$hub-radius-pill: 999px;
+$hub-shadow-sm: 0 1px 3px rgba(31, 28, 26, 0.08);
+$hub-shadow-md: 0 18px 55px rgba(49, 46, 58, 0.12);
+$hub-ease-out: cubic-bezier(0.22, 1, 0.36, 1);

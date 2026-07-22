@@ -1,0 +1,38 @@
+:root {
+  --hub-safe-bottom: env(safe-area-inset-bottom);
+  font-family: $hub-font-body;
+  color: $hub-text;
+  background: $hub-bg;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font: inherit;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid rgba($hub-primary, 0.6);
+  outline-offset: 3px;
+}

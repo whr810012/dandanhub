@@ -1,0 +1,18 @@
+{
+  "name": "蛋蛋中心 Dandan Hub",
+  "short_name": "蛋蛋中心",
+  "description": "持续孵化好用的小工具与创作产品。",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f0ebe3",
+  "theme_color": "#5969df",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

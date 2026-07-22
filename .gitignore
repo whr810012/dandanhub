@@ -1,0 +1,13 @@
+node_modules/
+dist/
+.DS_Store
+*.log
+.env
+.env.local
+.idea/
+.vscode/
+coverage/
+
+# 安装包体积大，部署时手动放入 public/downloads/
+public/downloads/*.exe
+public/downloads/*.msi
