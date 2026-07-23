@@ -34,6 +34,16 @@ const products = [
     tags: ['图片 / PDF / 视频', '可见与隐藏水印', '文件不上传'],
     action: '打开加水印',
   },
+  {
+    number: '04',
+    className: 'caption',
+    href: '/caption/',
+    eyebrow: 'SOCIAL COPY ASSISTANT',
+    title: '蛋蛋文案 Caption',
+    description: '上传图片或视频，用你的方舟 Key 一键生成小红书、抖音、朋友圈三套可直接发布的文案。',
+    tags: ['图/视频理解', '三平台文案', 'BYOK'],
+    action: '打开蛋蛋文案',
+  },
 ]
 </script>
 
@@ -50,6 +60,7 @@ const products = [
         <a href="/pindou/">拼豆工坊</a>
         <router-link to="/toolbox">工具箱</router-link>
         <a href="/watermark/">加水印</a>
+        <a href="/caption/">蛋蛋文案</a>
       </nav>
     </header>
 
@@ -73,7 +84,7 @@ const products = [
       <section id="products" class="products">
         <div class="section-head">
           <div><p>PRODUCTS / 01</p><h2>正在发光的产品</h2></div>
-          <span>3 个产品 · 持续孵化中</span>
+          <span>4 个产品 · 持续孵化中</span>
         </div>
         <div class="product-grid">
           <a
@@ -90,6 +101,9 @@ const products = [
               </template>
               <div v-else-if="product.className === 'toolbox'" class="note-window">
                 <span class="window-bar" /><strong>✓</strong><i /><i /><i />
+              </div>
+              <div v-else-if="product.className === 'caption'" class="caption-sheet">
+                <b>小红书</b><b>抖音</b><b>朋友圈</b>
               </div>
               <div v-else class="watermark-file"><span /><strong>DANDAN</strong></div>
             </div>
@@ -289,6 +303,7 @@ footer {
 .product-card--pindou { background: linear-gradient(160deg, #f2f4ff, #dfe4ff 48%, #fffaf4); }
 .product-card--toolbox { background: linear-gradient(160deg, #fff9eb, #f9ead9 46%, #fff); }
 .product-card--watermark { background: linear-gradient(160deg, #eef3ff, #dce6ff 46%, #f6f8ee); }
+.product-card--caption { background: linear-gradient(160deg, #fff9e8, #f3ecd0 46%, #e8f4ff); }
 .card-top { position: absolute; inset: 18px 18px auto; z-index: 2; display: flex; justify-content: space-between; font: 800 11px $hub-font-display; }
 .state { display: flex; gap: 6px; align-items: center; padding: 5px 9px; border-radius: $hub-radius-pill; background: rgba(#fff, 0.6); font: 700 9px $hub-font-body; }
 .state i { width: 6px; height: 6px; border-radius: 50%; background: #4ba979; }
@@ -306,6 +321,28 @@ footer {
 .watermark-file { width: 194px; height: 170px; padding: 15px; border: 4px solid #fff; border-radius: 10px; background: #f7f4e9; transform: rotate(4deg); }
 .watermark-file span { display: block; height: 110px; background: linear-gradient(145deg, #f7ce74, #6f9ad9 50%, #304e89); }
 .watermark-file strong { display: block; margin-top: -58px; text-align: center; color: rgba(21, 79, 209, 0.5); transform: rotate(-18deg); }
+.card-art--caption { background: #1c1b22; }
+.caption-sheet {
+  display: grid;
+  gap: 10px;
+  width: 200px;
+  padding: 18px;
+  border-radius: 16px;
+  background: #fff8df;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+  transform: rotate(-3deg);
+}
+.caption-sheet b {
+  display: block;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: #fff;
+  color: #1c1b22;
+  font: 800 13px $hub-font-display;
+  letter-spacing: -0.02em;
+}
+.caption-sheet b:nth-child(2) { background: #f6e27a; }
+.caption-sheet b:nth-child(3) { background: #d7ecff; }
 .card-body { display: flex; flex: 1; padding: 26px 25px 25px; flex-direction: column; border-top: 1px solid rgba(57, 57, 72, 0.08); background: rgba(#fff, 0.7); }
 .card-body h3 { margin: 5px 0 13px; font: 800 clamp(27px, 5vw, 34px) $hub-font-display; letter-spacing: -0.035em; }
 .card-body > p:not(.eyebrow) { margin: 0; color: $hub-text-secondary; font-size: 12px; line-height: 1.75; }
@@ -331,7 +368,8 @@ footer p { margin: 0; }
   .hero { grid-template-columns: minmax(0, 1.1fr) minmax(340px, 0.7fr); }
   .principles > div { grid-template-columns: repeat(3, 1fr); }
 }
-@media (min-width: 980px) { .product-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (min-width: 980px) { .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1280px) { .product-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 @media (max-width: 759px) {
   .hero { min-height: auto; }
   .universe { order: -1; }

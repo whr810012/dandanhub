@@ -12,6 +12,8 @@
     Cross-Origin-Embedder-Policy = "require-corp"
     Cross-Origin-Resource-Policy = "same-origin"
 
+# caption 站点部署后请确认 Netlify 子域与下方代理一致：dandan-caption.netlify.app
+
 [[redirects]]
   from = "/home"
   to = "/pindou/home"
@@ -99,6 +101,24 @@
 [[redirects]]
   from = "/watermark/*"
   to = "https://dandan-watermark.netlify.app/watermark/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/caption"
+  to = "https://dandan-caption.netlify.app/caption/"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/caption/"
+  to = "https://dandan-caption.netlify.app/caption/"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/caption/*"
+  to = "https://dandan-caption.netlify.app/caption/:splat"
   status = 200
   force = true
 
