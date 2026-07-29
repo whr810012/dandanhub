@@ -1,0 +1,17 @@
+# 旧路径 → /pindou（301）
+/home /pindou/home 301
+/workspace /pindou/workspace 301
+/editor /pindou/editor 301
+/focus /pindou/focus 301
+/projects /pindou/projects 301
+/gallery /pindou/gallery 301
+/gallery/* /pindou/gallery/:splat 301
+/preview3d /pindou/preview3d 301
+/palette /pindou/palette 301
+/text /pindou/text 301
+/guide /pindou/guide 301
+/bead-core /pindou/bead-core 301
+/static/* /pindou/static/:splat 301
+
+# Hub SPA fallback（反代路径由 functions/_middleware 处理，见 _routes.json）
+/* /index.html 200

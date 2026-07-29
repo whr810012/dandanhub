@@ -12,7 +12,10 @@
     Cross-Origin-Embedder-Policy = "require-corp"
     Cross-Origin-Resource-Policy = "same-origin"
 
-# caption 站点部署后请确认 Netlify 子域与下方代理一致：dandan-caption.netlify.app
+# caption 站点部署后请将 Hub 的 CAPTION_ORIGIN 设为对应 *.pages.dev（或下方 Netlify 上游）
+
+# --- Cloudflare Pages：用 functions/_middleware.ts + 环境变量 PINDOU_ORIGIN 等 ---
+# --- 以下为 Netlify 外部反代（双跑/回滚时用）---
 
 [[redirects]]
   from = "/home"

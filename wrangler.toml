@@ -1,0 +1,12 @@
+# Cloudflare Pages（含 functions/），不是 Workers。
+# Dashboard 推荐配置：
+#   Build command:  npm run build
+#   Deploy command: （留空，由 Pages 自动上传 dist）
+# 不要填：npx wrangler deploy
+#
+# 若必须手写 Deploy command，请用：
+#   npx wrangler pages deploy dist --project-name=dandanhub
+
+name = "dandanhub"
+compatibility_date = "2024-11-12"
+pages_build_output_dir = "dist"
