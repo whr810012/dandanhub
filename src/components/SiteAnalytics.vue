@@ -1,28 +1,45 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted } from 'vue'
+import { watchEffect } from 'vue'
+import { useRoute } from 'vue-router'
 
-/** UStat 站点 dandanhub.vip 的公开统计脚本（可被环境变量覆盖） */
-const DEFAULT_USTAT_SRC =
+/** Hub 根站；下载页单独记到蛋蛋便签站点 */
+const HUB_USTAT_SRC =
   'https://019fabb0-6891-7e89-9f51-89b2491f12a5.spst2.com/ustat.js'
+const NOTE_USTAT_SRC =
+  'https://019fabc0-013a-7ccb-8268-02d484882e94.spst2.com/ustat.js'
 
 const envSrc = (import.meta.env.VITE_USTAT_SCRIPT_URL as string | undefined)?.trim()
-const scriptSrc = envSrc || (import.meta.env.PROD ? DEFAULT_USTAT_SRC : undefined)
+const route = useRoute()
 
 let scriptEl: HTMLScriptElement | null = null
 
-onMounted(() => {
-  if (!scriptSrc || typeof document === 'undefined') return
-  if (document.querySelector(`script[src="${scriptSrc}"]`)) return
+function resolveScriptSrc(path: string): string | undefined {
+  if (envSrc) return envSrc
+  if (!import.meta.env.PROD) return undefined
+  return path === '/toolbox' || path.startsWith('/toolbox/') ? NOTE_USTAT_SRC : HUB_USTAT_SRC
+}
 
+function ensureScript(src: string | undefined) {
+  if (typeof document === 'undefined') return
+  if (!src) {
+    scriptEl?.remove()
+    scriptEl = null
+    return
+  }
+  if (scriptEl?.src === src) return
+  scriptEl?.remove()
   scriptEl = document.createElement('script')
   scriptEl.async = true
-  scriptEl.src = scriptSrc
+  scriptEl.src = src
   document.head.appendChild(scriptEl)
-})
+}
 
-onUnmounted(() => {
-  scriptEl?.remove()
-  scriptEl = null
+watchEffect((onCleanup) => {
+  ensureScript(resolveScriptSrc(route.path))
+  onCleanup(() => {
+    scriptEl?.remove()
+    scriptEl = null
+  })
 })
 </script>
 
