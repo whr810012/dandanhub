@@ -1,4 +1,5 @@
 # 旧路径 → /pindou（301）
+# SPA fallback 由 wrangler.toml 的 not_found_handling = "single-page-application" 处理，勿写 /* /index.html（会触发无限循环）
 /home /pindou/home 301
 /workspace /pindou/workspace 301
 /editor /pindou/editor 301
@@ -12,6 +13,3 @@
 /guide /pindou/guide 301
 /bead-core /pindou/bead-core 301
 /static/* /pindou/static/:splat 301
-
-# Hub SPA fallback（反代路径由 functions/_middleware 处理，见 _routes.json）
-/* /index.html 200
