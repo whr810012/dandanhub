@@ -8,7 +8,8 @@
     "build": "vue-tsc --noEmit && vite build",
     "type-check": "vue-tsc --noEmit",
     "preview": "vite preview",
-    "deploy:cf": "npx wrangler pages deploy dist --project-name=dandanhub"
+    "deploy:cf": "npx wrangler pages deploy dist --project-name=dandanhub",
+    "deploy": "npm run deploy:cf"
   },
   "dependencies": {
     "vue": "^3.4.21",

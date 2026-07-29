@@ -24,7 +24,10 @@ npm run dev
 1. 在 Cloudflare 创建 **Pages** 项目（不要用 Workers + `wrangler deploy`），连接本仓库，配置：
    - **Build command**: `npm run build`
    - **Build output directory**: `dist`
-   - **Deploy command**: **留空**（Pages 会自动发布 `dist` + `functions/`）
+   - **Deploy command**（二选一）：
+     - **推荐：留空**（Pages Git 集成会自动上传）
+     - 若系统强制填写，改成：`npx wrangler pages deploy dist --project-name=dandanhub`  
+       或：`npm run deploy`
    - **Root directory**: 仓库根（若 monorepo 则填 `dandanhub`）
    - **Node version**: `20`（或 22）
 2. 先部署三个子站，记下各自 `https://<name>.pages.dev`
