@@ -9,7 +9,7 @@
   for = "/watermark/*"
   [headers.values]
     Cross-Origin-Opener-Policy = "same-origin"
-    Cross-Origin-Embedder-Policy = "require-corp"
+    Cross-Origin-Embedder-Policy = "credentialless"
     Cross-Origin-Resource-Policy = "same-origin"
 
 # caption 站点部署后请将 Hub 的 CAPTION_ORIGIN 设为对应 *.pages.dev（或下方 Netlify 上游）

@@ -71,7 +71,8 @@ function filterRequestHeaders(source: Headers, upstreamHost: string): Headers {
 function withCoopHeaders(headers: Headers): Headers {
   const next = new Headers(headers)
   next.set('Cross-Origin-Opener-Policy', 'same-origin')
-  next.set('Cross-Origin-Embedder-Policy', 'require-corp')
+  // credentialless：允许视频多线程 SAB，且不挡无 CORP 的第三方统计脚本
+  next.set('Cross-Origin-Embedder-Policy', 'credentialless')
   next.set('Cross-Origin-Resource-Policy', 'same-origin')
   return next
 }
