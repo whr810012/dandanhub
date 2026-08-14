@@ -18,6 +18,7 @@ npm run dev
 - `/pindou/*`：Worker 反代到独立 `pindou-web`
 - `/watermark/*`：反代到 `dandan-watermark`
 - `/caption/*`：反代到 `dandan-caption`
+- `/housekeeping/*`：反代到家政后台（不出现在首页；源码不在本仓库）
 
 ## 部署（Cloudflare Workers + Assets）
 
@@ -29,7 +30,7 @@ npm run dev
    - **Deploy command**: `npx wrangler deploy`（可保持现状）
    - **Root directory**: `dandanhub`（monorepo 时）
    - **Node**: `20` 或 `22`
-2. 先部署三个子站，记下 `https://<name>.pages.dev`
+2. 先部署子站，记下 `https://<name>.pages.dev`
 3. **Settings → Variables**（Production）配置：
 
 | 变量 | 示例 |
@@ -37,8 +38,9 @@ npm run dev
 | `PINDOU_ORIGIN` | `https://pindou-web.pages.dev` |
 | `WATERMARK_ORIGIN` | `https://dandan-watermark.pages.dev` |
 | `CAPTION_ORIGIN` | `https://dandan-caption.pages.dev` |
+| `HOUSEKEEPING_ORIGIN` | `https://housekeeping-admin.pages.dev` |
 
-（不要末尾 `/`）
+（不要末尾 `/`。家政页不进产品中心，只通过 `https://dandanhub.vip/housekeeping/` 访问。）
 
 4. 自定义域绑到该 Worker；阿里云 DNS CNAME 按控制台提示。
 5. 反代入口：[`workers/site.ts`](workers/site.ts)；静态资源：`dist`（见 [`wrangler.toml`](wrangler.toml)）。

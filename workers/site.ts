@@ -3,8 +3,8 @@
  * 适配控制台 Deploy command: `npx wrangler deploy`
  *
  * 环境变量（Production）：
- *   PINDOU_ORIGIN / WATERMARK_ORIGIN / CAPTION_ORIGIN
- * （不要末尾斜杠；路径仍带 /pindou 等前缀）
+ *   PINDOU_ORIGIN / WATERMARK_ORIGIN / CAPTION_ORIGIN / HOUSEKEEPING_ORIGIN
+ * （不要末尾斜杠；路径仍带 /pindou、/housekeeping 等前缀）
  */
 
 /// <reference types="@cloudflare/workers-types" />
@@ -14,6 +14,7 @@ export interface Env {
   PINDOU_ORIGIN?: string
   WATERMARK_ORIGIN?: string
   CAPTION_ORIGIN?: string
+  HOUSEKEEPING_ORIGIN?: string
 }
 
 interface ProxyMatch {
@@ -22,6 +23,11 @@ interface ProxyMatch {
 }
 
 function resolveProxy(pathname: string, env: Env): ProxyMatch | Response | null {
+  if (pathname === '/housekeeping' || pathname.startsWith('/housekeeping/')) {
+    const origin = env.HOUSEKEEPING_ORIGIN?.replace(/\/$/, '')
+    if (!origin) return new Response('HOUSEKEEPING_ORIGIN is not configured', { status: 503 })
+    return { origin, addCoop: false }
+  }
   if (pathname === '/pindou' || pathname.startsWith('/pindou/')) {
     const origin = env.PINDOU_ORIGIN?.replace(/\/$/, '')
     if (!origin) return new Response('PINDOU_ORIGIN is not configured', { status: 503 })
