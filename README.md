@@ -55,7 +55,7 @@ npm run dev
 
 下载页引用以下文件，但安装包不提交到当前源码仓库：
 
-- `public/downloads/dandan-note-0.1.2-x64-setup.exe`
-- `public/downloads/dandan-note-0.1.2-x64-portable.exe`
+- `public/downloads/dandan-note-0.1.3-x64-setup.exe`
+- `public/downloads/dandan-note-0.1.3-x64-portable.exe`
 
 部署前请从 `dandan-note` 的发布流程复制或下载对应产物到上述位置。

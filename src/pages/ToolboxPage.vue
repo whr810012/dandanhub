@@ -4,8 +4,8 @@ import { usePageSeo } from '@/utils/seo'
 usePageSeo('toolbox')
 
 const downloads = {
-  installer: '/downloads/dandan-note-0.1.2-x64-setup.exe',
-  portable: '/downloads/dandan-note-0.1.2-x64-portable.exe',
+  installer: '/downloads/dandan-note-0.1.3-x64-setup.exe',
+  portable: '/downloads/dandan-note-0.1.3-x64-portable.exe',
 }
 </script>
 
@@ -49,7 +49,7 @@ const downloads = {
             <div class="meta">
               <span class="icon">蛋</span>
               <div><h3>蛋蛋便签</h3><p>Windows 桌面便签与待办</p></div>
-              <span class="version">v0.1.2</span>
+              <span class="version">v0.1.3</span>
             </div>
             <p class="intro">把今天要记住的事，安静地留在桌面上。支持笔记与待办、日期筛选、标签分类和透明度调整，数据只保存在你的电脑里。</p>
             <ul>
