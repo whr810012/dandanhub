@@ -5,6 +5,9 @@ name = "dandanhub"
 main = "workers/site.ts"
 compatibility_date = "2024-11-12"
 
+# 部署时保留控制台 Variables and secrets，避免每次 push 后 plain vars 被清空
+keep_vars = true
+
 [assets]
 directory = "./dist"
 binding = "ASSETS"

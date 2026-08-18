@@ -31,7 +31,9 @@ npm run dev
    - **Root directory**: `dandanhub`（monorepo 时）
    - **Node**: `20` 或 `22`
 2. 先部署子站，记下 `https://<name>.pages.dev`
-3. **Settings → Variables**（Production）配置：
+3. 反代上游地址有两种配法（**plain Variable 默认会被每次 `wrangler deploy` 清掉**）：
+   - 推荐：写在 [`wrangler.toml`](wrangler.toml) 的 `[vars]` 里，随代码部署。
+   - 或继续用控制台 **Variables and secrets**：`wrangler.toml` 已开 `keep_vars = true`，部署后会保留控制台里的变量。加密 **Secret** 本身不会被清。
 
 | 变量 | 示例 |
 |------|------|
