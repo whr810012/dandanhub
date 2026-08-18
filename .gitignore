@@ -8,6 +8,3 @@ dist/
 .vscode/
 coverage/
 
-# 安装包体积大，部署时手动放入 public/downloads/
-public/downloads/*.exe
-public/downloads/*.msi

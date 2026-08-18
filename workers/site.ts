@@ -125,6 +125,21 @@ export default {
     if (match instanceof Response) return match
     if (match) return proxyRequest(request, match, url)
 
-    return env.ASSETS.fetch(request)
+    const asset = await env.ASSETS.fetch(request)
+    if (
+      url.pathname.startsWith('/downloads/') &&
+      (url.pathname.endsWith('.exe') || url.pathname.endsWith('.msi'))
+    ) {
+      const contentType = asset.headers.get('content-type') || ''
+      if (!asset.ok || contentType.includes('text/html')) {
+        return new Response('Not Found', { status: 404 })
+      }
+      const filename = decodeURIComponent(url.pathname.slice(url.pathname.lastIndexOf('/') + 1))
+      const headers = new Headers(asset.headers)
+      headers.set('Content-Disposition', `attachment; filename="${filename}"`)
+      return new Response(asset.body, { status: asset.status, headers })
+    }
+
+    return asset
   },
 }
