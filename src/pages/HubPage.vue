@@ -20,8 +20,8 @@ const products = [
     href: '/toolbox',
     eyebrow: 'DESKTOP UTILITIES',
     title: '蛋蛋工具箱',
-    description: '收纳认真做的小型桌面工具。首个成员“蛋蛋便签”，让笔记和待办安静地留在桌面上。',
-    tags: ['桌面便签', '待办管理', '本地数据'],
+    description: '收纳认真做的小型工具。蛋蛋便签在桌面，OpenTrace 在浏览器里调试 Agent / RAG。',
+    tags: ['桌面便签', 'OpenTrace', '本地数据'],
     action: '打开工具箱',
   },
   {

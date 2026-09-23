@@ -32,7 +32,7 @@ const downloads = {
       <section class="tools" aria-labelledby="desktop-tools">
         <div class="section-head">
           <div><p>01 / 桌面效率</p><h2 id="desktop-tools">现在可用</h2></div>
-          <span>1 个工具</span>
+          <span>2 个工具</span>
         </div>
 
         <article class="tool-card">
@@ -63,6 +63,50 @@ const downloads = {
               <a :href="downloads.portable" download><b>↗</b><span><strong>便携版 EXE</strong><small>无需安装，直接运行</small></span></a>
             </div>
             <p class="notice">首次运行若出现 Windows 安全提示，请选择“更多信息”后继续运行。</p>
+          </div>
+        </article>
+      </section>
+
+      <section class="tools tools--web" aria-labelledby="web-tools">
+        <div class="section-head">
+          <div><p>02 / 在线调试</p><h2 id="web-tools">浏览器里打开</h2></div>
+          <span>无需安装</span>
+        </div>
+
+        <article class="tool-card tool-card--opentrace">
+          <div class="preview preview--trace" aria-hidden="true">
+            <div class="trace-window">
+              <span class="window-bar"><i /><i /><i /></span>
+              <div class="trace-body">
+                <div class="trace-rail">
+                  <i /><i /><i />
+                </div>
+                <div class="trace-lanes">
+                  <span style="--w: 72%" /><span style="--w: 48%" /><span style="--w: 88%" />
+                </div>
+              </div>
+            </div>
+            <span class="float float--trace">Trace</span>
+            <span class="float float--rag">RAG</span>
+          </div>
+
+          <div class="content">
+            <div class="meta">
+              <span class="icon icon--trace">OT</span>
+              <div><h3>OpenTrace Studio</h3><p>Agent / RAG 运行时可视化与调试</p></div>
+              <span class="version">v0.1</span>
+            </div>
+            <p class="intro">时间线、调用图、RAG 证据与回放。支持 Live Run 真调 API、JSONL / OTLP 导入导出，密钥只留在本机浏览器。</p>
+            <ul>
+              <li><span>✓</span> 时间线 / 调用图 / 瀑布图</li>
+              <li><span>✓</span> Live Run（DeepSeek / OpenAI）</li>
+              <li><span>✓</span> JSONL · OTLP · 分享链接</li>
+              <li><span>✓</span> 失败诊断与会话 Diff</li>
+            </ul>
+            <div class="downloads">
+              <a href="/opentrace/"><b>→</b><span><strong>打开 OpenTrace</strong><small>dandanhub.vip/opentrace</small></span></a>
+              <a href="https://github.com/whr810012/opentrace-studio" target="_blank" rel="noopener noreferrer"><b>⌥</b><span><strong>GitHub 源码</strong><small>Apache-2.0</small></span></a>
+            </div>
           </div>
         </article>
       </section>
@@ -112,6 +156,7 @@ nav a { padding: 7px 10px; border-radius: $hub-radius-pill; color: $hub-text-mut
 .hero-mark i { position: absolute; inset: 4px 20px; border: 1px dashed rgba($hub-primary, 0.35); border-radius: 50%; transform: rotate(15deg); }
 
 .tools { padding: 62px 0 20px; }
+.tools--web { padding-top: 28px; }
 .section-head { display: flex; align-items: end; justify-content: space-between; margin-bottom: 18px; }
 .section-head p { margin: 0 0 7px; color: $hub-accent; font-size: 9px; font-weight: 800; letter-spacing: 0.15em; }
 .section-head h2 { margin: 0; font: 800 clamp(26px, 5vw, 36px) $hub-font-display; }
@@ -119,6 +164,9 @@ nav a { padding: 7px 10px; border-radius: $hub-radius-pill; color: $hub-text-mut
 .tool-card { display: grid; overflow: hidden; border: 1px solid rgba(62, 62, 83, 0.12); border-radius: 28px; background: rgba(#fff, 0.72); box-shadow: $hub-shadow-md; }
 .preview { position: relative; min-height: 360px; overflow: hidden; background: linear-gradient(145deg, #fff8e8, #f3dfc6); }
 .preview::before { content: ''; position: absolute; inset: 0; opacity: 0.35; background-image: linear-gradient(rgba(99, 69, 39, 0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(99, 69, 39, 0.08) 1px, transparent 1px); background-size: 25px 25px; }
+.preview--trace {
+  background: linear-gradient(145deg, #e8eefc, #d4dff5 40%, #f4f0e8);
+}
 .note-window { position: absolute; top: 50%; left: 50%; width: min(78%, 330px); height: 220px; overflow: hidden; border: 1px solid rgba(92, 64, 39, 0.12); border-radius: 18px; background: rgba(#fff, 0.9); box-shadow: 0 24px 50px rgba(90, 61, 35, 0.18); transform: translate(-50%, -50%) rotate(2deg); }
 .window-bar { display: flex; gap: 6px; height: 39px; padding: 15px; border-bottom: 1px solid #eee5da; }
 .window-bar i { width: 7px; height: 7px; border-radius: 50%; background: #ded3c6; }
@@ -128,13 +176,60 @@ nav a { padding: 7px 10px; border-radius: $hub-radius-pill; color: $hub-text-mut
 .window-body div { padding: 28px 22px; }
 .window-body div i { display: block; width: 88%; height: 9px; margin-bottom: 18px; border-radius: 10px; background: #e6ded5; }
 .window-body div i:first-child { width: 55%; height: 13px; background: #625c57; }
+.trace-window {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(78%, 330px);
+  height: 220px;
+  overflow: hidden;
+  border: 1px solid rgba(40, 60, 120, 0.14);
+  border-radius: 18px;
+  background: rgba(#fff, 0.92);
+  box-shadow: 0 24px 50px rgba(40, 60, 120, 0.16);
+  transform: translate(-50%, -50%) rotate(-2deg);
+}
+.trace-body { display: grid; height: calc(100% - 39px); grid-template-columns: 52px 1fr; }
+.trace-rail {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 28px 16px;
+  border-right: 1px solid #e4e8f2;
+  background: #f3f5fb;
+}
+.trace-rail i {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #7a8fd4;
+  box-shadow: 0 0 0 4px rgba(122, 143, 212, 0.18);
+}
+.trace-lanes {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+  padding: 24px 20px;
+}
+.trace-lanes span {
+  display: block;
+  width: var(--w);
+  height: 12px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #5b74c9, #9eb0e8);
+  opacity: 0.85;
+}
 .float { position: absolute; padding: 7px 12px; border: 2px solid #fff; border-radius: $hub-radius-pill; background: rgba(#fff, 0.9); color: $hub-text-secondary; font-size: 10px; font-weight: 700; box-shadow: $hub-shadow-sm; }
 .float--pin { top: 16%; right: 10%; transform: rotate(7deg); }
 .float--local { bottom: 14%; left: 9%; transform: rotate(-6deg); }
+.float--trace { top: 15%; right: 9%; transform: rotate(6deg); }
+.float--rag { bottom: 13%; left: 10%; transform: rotate(-5deg); }
 
 .content { padding: clamp(26px, 5vw, 44px); }
 .meta { display: grid; align-items: center; grid-template-columns: auto 1fr auto; gap: 14px; }
 .icon { display: grid; width: 50px; height: 58px; place-items: center; border-radius: 50% 50% 46% 46% / 58% 58% 42% 42%; background: $hub-primary; color: #fff; font: 800 16px $hub-font-display; transform: rotate(-5deg); }
+.icon--trace { background: linear-gradient(145deg, #4a63b8, #2f458c); font-size: 13px; letter-spacing: -0.04em; }
 .meta h3 { margin: 0; font: 800 clamp(25px, 5vw, 34px) $hub-font-display; }
 .meta p { margin: 3px 0 0; color: $hub-text-muted; font-size: 11px; }
 .version { padding: 5px 9px; border-radius: $hub-radius-pill; background: $hub-primary-light; color: $hub-primary; font-size: 10px; font-weight: 700; }
@@ -146,6 +241,10 @@ li span { margin-right: 7px; color: #43805b; font-weight: 800; }
 .downloads a { display: flex; align-items: center; gap: 13px; padding: 14px 16px; border: 1px solid rgba($hub-primary, 0.16); border-radius: 15px; background: $hub-primary; color: #fff; text-decoration: none; transition: transform 0.2s $hub-ease-out; }
 .downloads a + a { background: #fff; color: $hub-text; }
 .downloads a:hover { transform: translateY(-2px); }
+.tool-card--opentrace .downloads a:first-child {
+  background: linear-gradient(135deg, #3f58a8, #2c3f7a);
+  border-color: rgba(47, 69, 140, 0.3);
+}
 .downloads b { display: grid; width: 34px; height: 34px; place-items: center; border-radius: 10px; background: rgba(#fff, 0.16); font-size: 18px; }
 .downloads span { display: flex; flex-direction: column; }
 .downloads strong { font-size: 13px; }

@@ -14,10 +14,11 @@ npm run dev
 ## 路径职责
 
 - `/`：Dandan Hub 产品中心
-- `/toolbox`：蛋蛋便签下载页
+- `/toolbox`：蛋蛋工具箱（便签下载 + OpenTrace 入口）
 - `/pindou/*`：Worker 反代到独立 `pindou-web`
 - `/watermark/*`：反代到 `dandan-watermark`
 - `/caption/*`：反代到 `dandan-caption`
+- `/opentrace/*`：反代到 `opentrace-studio`
 - `/housekeeping/*`：反代到家政后台（不出现在首页；源码不在本仓库）
 
 ## 部署（Cloudflare Workers + Assets）
@@ -41,8 +42,17 @@ npm run dev
 | `WATERMARK_ORIGIN` | `https://dandan-watermark.pages.dev` |
 | `CAPTION_ORIGIN` | `https://dandan-caption.pages.dev` |
 | `HOUSEKEEPING_ORIGIN` | `https://housekeeping-admin.pages.dev` |
+| `OPENTRACE_ORIGIN` | `https://opentrace-studio.pages.dev` |
 
-（不要末尾 `/`。家政页不进产品中心，只通过 `https://dandanhub.vip/housekeeping/` 访问。）
+（不要末尾 `/`。家政页不进产品中心，只通过 `https://dandanhub.vip/housekeeping/` 访问。OpenTrace 入口在 [工具箱](https://dandanhub.vip/toolbox)，正式地址为 `https://dandanhub.vip/opentrace/`。）
+
+### 新增 OpenTrace 子站时
+
+1. 在 Cloudflare Pages 新建项目，连接 [opentrace-studio](https://github.com/whr810012/opentrace-studio) 仓库  
+2. Build：`pnpm install && pnpm build`，Output：`dist`，Node：`20+`  
+3. 记下 `https://xxxx.pages.dev`，写入本仓库 `wrangler.toml` 的 `OPENTRACE_ORIGIN`  
+4. 部署本 Hub（`npx wrangler deploy`）  
+5. 验证：`https://dandanhub.vip/toolbox` 入口 → `https://dandanhub.vip/opentrace/`
 
 4. 自定义域绑到该 Worker；阿里云 DNS CNAME 按控制台提示。
 5. 反代入口：[`workers/site.ts`](workers/site.ts)；静态资源：`dist`（见 [`wrangler.toml`](wrangler.toml)）。

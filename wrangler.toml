@@ -5,8 +5,16 @@ name = "dandanhub"
 main = "workers/site.ts"
 compatibility_date = "2024-11-12"
 
-# 部署时保留控制台 Variables and secrets，避免每次 push 后 plain vars 被清空
+# 部署时保留控制台里多出来的变量；下面 [vars] 会随每次 deploy 写入
 keep_vars = true
+
+[vars]
+PINDOU_ORIGIN = "https://pindou-web-5mh.pages.dev"
+WATERMARK_ORIGIN = "https://watermark-web-35q.pages.dev"
+CAPTION_ORIGIN = "https://dandan-caption.pages.dev"
+HOUSEKEEPING_ORIGIN = "https://housekeeping-admin-9x3.pages.dev"
+# 首次部署 OpenTrace 后，改成实际的 *.pages.dev（不要末尾 /）
+OPENTRACE_ORIGIN = "https://opentrace-studio.pages.dev"
 
 [assets]
 directory = "./dist"
