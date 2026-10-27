@@ -6,12 +6,17 @@ const pages = {
   hub: {
     path: '/',
     title: '蛋蛋中心 Dandan Hub - 好用的小工具与创作产品',
-    description: '一颗蛋蛋，孵化好用的点子。探索 Pindou 拼豆工坊、蛋蛋便签与本地加水印工具。',
+    description: '一颗蛋蛋，孵化好用的点子。探索 Pindou 拼豆工坊、蛋蛋便签、dan-ui 组件库与本地加水印工具。',
   },
   toolbox: {
     path: '/toolbox',
     title: '蛋蛋工具箱 - 蛋蛋便签 Windows 下载',
     description: '下载蛋蛋便签 Windows 桌面版，支持便签待办、桌面置顶、标签分类与本地数据保存。',
+  },
+  danui: {
+    path: '/dan-ui',
+    title: 'dan-ui - Vue 3 组件库 | 蛋蛋中心',
+    description: 'Vue 3 通用基础 UI 组件库 @dandan-ui/ui，支持主题 Token、按需引入、AI 对话与富文本组件。',
   },
 } as const
 

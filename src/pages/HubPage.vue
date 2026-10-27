@@ -44,6 +44,16 @@ const products = [
     tags: ['图/视频理解', '三平台文案', 'BYOK'],
     action: '打开蛋蛋文案',
   },
+  {
+    number: '05',
+    className: 'danui',
+    href: '/dan-ui',
+    eyebrow: 'VUE 3 COMPONENT LIBRARY',
+    title: 'dan-ui 组件库',
+    description: 'Vue 3 通用基础 UI。表单、展示、反馈，以及 AI 对话与富文本；CSS 变量主题，可全量或按需引入。',
+    tags: ['@dandan-ui/ui', '主题 Token', '开源 npm'],
+    action: '查看 dan-ui',
+  },
 ]
 </script>
 
@@ -61,6 +71,7 @@ const products = [
         <router-link to="/toolbox">工具箱</router-link>
         <a href="/watermark/">加水印</a>
         <a href="/caption/">蛋蛋文案</a>
+        <router-link to="/dan-ui">dan-ui</router-link>
       </nav>
     </header>
 
@@ -84,7 +95,7 @@ const products = [
       <section id="products" class="products">
         <div class="section-head">
           <div><p>PRODUCTS / 01</p><h2>正在发光的产品</h2></div>
-          <span>4 个产品 · 持续孵化中</span>
+          <span>5 个产品 · 持续孵化中</span>
         </div>
         <div class="product-grid">
           <a
@@ -104,6 +115,9 @@ const products = [
               </div>
               <div v-else-if="product.className === 'caption'" class="caption-sheet">
                 <b>小红书</b><b>抖音</b><b>朋友圈</b>
+              </div>
+              <div v-else-if="product.className === 'danui'" class="danui-kit">
+                <i class="btn" /><i class="field" /><i class="chip" /><i class="chip chip--accent" />
               </div>
               <div v-else class="watermark-file"><span /><strong>DANDAN</strong></div>
             </div>
@@ -304,6 +318,7 @@ footer {
 .product-card--toolbox { background: linear-gradient(160deg, #fff9eb, #f9ead9 46%, #fff); }
 .product-card--watermark { background: linear-gradient(160deg, #eef3ff, #dce6ff 46%, #f6f8ee); }
 .product-card--caption { background: linear-gradient(160deg, #fff9e8, #f3ecd0 46%, #e8f4ff); }
+.product-card--danui { background: linear-gradient(160deg, #eef1ff, #d8dff8 46%, #fff8ef); }
 .card-top { position: absolute; inset: 18px 18px auto; z-index: 2; display: flex; justify-content: space-between; font: 800 11px $hub-font-display; }
 .state { display: flex; gap: 6px; align-items: center; padding: 5px 9px; border-radius: $hub-radius-pill; background: rgba(#fff, 0.6); font: 700 9px $hub-font-body; }
 .state i { width: 6px; height: 6px; border-radius: 50%; background: #4ba979; }
@@ -343,6 +358,36 @@ footer {
 }
 .caption-sheet b:nth-child(2) { background: #f6e27a; }
 .caption-sheet b:nth-child(3) { background: #d7ecff; }
+.card-art--danui { background: #222433; }
+.danui-kit {
+  display: grid;
+  gap: 12px;
+  width: 200px;
+  padding: 22px;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+  transform: rotate(-3deg);
+}
+.danui-kit .btn {
+  width: 46%;
+  height: 18px;
+  border-radius: 999px;
+  background: $hub-primary;
+}
+.danui-kit .field {
+  width: 90%;
+  height: 16px;
+  border-radius: 8px;
+  background: #e8ebf6;
+}
+.danui-kit .chip {
+  width: 38%;
+  height: 14px;
+  border-radius: 999px;
+  background: #f2cf75;
+}
+.danui-kit .chip--accent { width: 30%; background: $hub-accent; }
 .card-body { display: flex; flex: 1; padding: 26px 25px 25px; flex-direction: column; border-top: 1px solid rgba(57, 57, 72, 0.08); background: rgba(#fff, 0.7); }
 .card-body h3 { margin: 5px 0 13px; font: 800 clamp(27px, 5vw, 34px) $hub-font-display; letter-spacing: -0.035em; }
 .card-body > p:not(.eyebrow) { margin: 0; color: $hub-text-secondary; font-size: 12px; line-height: 1.75; }
@@ -369,7 +414,7 @@ footer p { margin: 0; }
   .principles > div { grid-template-columns: repeat(3, 1fr); }
 }
 @media (min-width: 980px) { .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (min-width: 1280px) { .product-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@media (min-width: 1280px) { .product-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 @media (max-width: 759px) {
   .hero { min-height: auto; }
   .universe { order: -1; }

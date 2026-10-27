@@ -15,6 +15,7 @@ npm run dev
 
 - `/`：Dandan Hub 产品中心
 - `/toolbox`：蛋蛋工具箱（便签下载 + OpenTrace 入口）
+- `/dan-ui`：dan-ui Vue 3 组件库介绍（npm / GitHub）
 - `/pindou/*`：Worker 反代到独立 `pindou-web`
 - `/watermark/*`：反代到 `dandan-watermark`
 - `/caption/*`：反代到 `dandan-caption`

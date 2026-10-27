@@ -5,6 +5,7 @@ export default createRouter({
   routes: [
     { path: '/', name: 'hub', component: () => import('@/pages/HubPage.vue') },
     { path: '/toolbox', name: 'toolbox', component: () => import('@/pages/ToolboxPage.vue') },
+    { path: '/dan-ui', name: 'dan-ui', component: () => import('@/pages/DanUiPage.vue') },
     { path: '/:pathMatch(.*)*', redirect: '/' },
   ],
   scrollBehavior: () => ({ top: 0 }),
