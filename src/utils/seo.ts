@@ -15,8 +15,9 @@ const pages = {
   },
   danui: {
     path: '/dan-ui',
-    title: 'dan-ui - Vue 3 组件库 | 蛋蛋中心',
-    description: 'Vue 3 通用基础 UI 组件库 @dandan-ui/ui，支持主题 Token、按需引入、AI 对话与富文本组件。',
+    title: 'dan-ui — Vue 3 组件库官网',
+    description:
+      'dan-ui 官方站点。Vue 3 通用基础 UI：@dandan-ui/ui 与 @dandan-ui/theme，支持主题 Token、按需引入、AI 对话与富文本。',
   },
 } as const
 
