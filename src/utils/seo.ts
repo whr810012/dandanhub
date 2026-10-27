@@ -13,12 +13,6 @@ const pages = {
     title: '蛋蛋工具箱 - 蛋蛋便签 Windows 下载',
     description: '下载蛋蛋便签 Windows 桌面版，支持便签待办、桌面置顶、标签分类与本地数据保存。',
   },
-  danui: {
-    path: '/dan-ui',
-    title: 'dan-ui — Vue 3 组件库官网',
-    description:
-      'dan-ui 官方站点。Vue 3 通用基础 UI：@dandan-ui/ui 与 @dandan-ui/theme，支持主题 Token、按需引入、AI 对话与富文本。',
-  },
 } as const
 
 function setMeta(selector: string, attribute: string, value: string) {

@@ -3,8 +3,8 @@
  * 适配控制台 Deploy command: `npx wrangler deploy`
  *
  * 环境变量（Production）：
- *   PINDOU_ORIGIN / WATERMARK_ORIGIN / CAPTION_ORIGIN / HOUSEKEEPING_ORIGIN / OPENTRACE_ORIGIN
- * （不要末尾斜杠；路径仍带 /pindou、/opentrace 等前缀）
+ *   PINDOU_ORIGIN / WATERMARK_ORIGIN / CAPTION_ORIGIN / HOUSEKEEPING_ORIGIN / OPENTRACE_ORIGIN / DANUI_ORIGIN
+ * （不要末尾斜杠；路径仍带 /pindou、/opentrace、/dan-ui 等前缀）
  */
 
 /// <reference types="@cloudflare/workers-types" />
@@ -16,6 +16,7 @@ export interface Env {
   CAPTION_ORIGIN?: string
   HOUSEKEEPING_ORIGIN?: string
   OPENTRACE_ORIGIN?: string
+  DANUI_ORIGIN?: string
 }
 
 interface ProxyMatch {
@@ -47,6 +48,11 @@ function resolveProxy(pathname: string, env: Env): ProxyMatch | Response | null 
   if (pathname === '/opentrace' || pathname.startsWith('/opentrace/')) {
     const origin = env.OPENTRACE_ORIGIN?.replace(/\/$/, '')
     if (!origin) return new Response('OPENTRACE_ORIGIN is not configured', { status: 503 })
+    return { origin, addCoop: false }
+  }
+  if (pathname === '/dan-ui' || pathname.startsWith('/dan-ui/')) {
+    const origin = env.DANUI_ORIGIN?.replace(/\/$/, '')
+    if (!origin) return new Response('DANUI_ORIGIN is not configured', { status: 503 })
     return { origin, addCoop: false }
   }
   return null

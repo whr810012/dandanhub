@@ -47,12 +47,12 @@ const products = [
   {
     number: '05',
     className: 'danui',
-    href: '/dan-ui',
+    href: '/dan-ui/',
     eyebrow: 'VUE 3 COMPONENT LIBRARY',
     title: 'dan-ui 组件库',
-    description: 'Vue 3 通用基础 UI 官网。表单、展示、反馈，以及 AI 对话与富文本；CSS 变量主题，可全量或按需引入。',
-    tags: ['官网', '@dandan-ui/ui', '开源 npm'],
-    action: '打开官网',
+    description: 'Vue 3 组件文档站。表单、展示、反馈，以及 AI 对话与富文本；在线查看 API 与示例。',
+    tags: ['文档站', '@dandan-ui/ui', '开源 npm'],
+    action: '打开文档',
   },
 ]
 </script>
@@ -71,7 +71,7 @@ const products = [
         <router-link to="/toolbox">工具箱</router-link>
         <a href="/watermark/">加水印</a>
         <a href="/caption/">蛋蛋文案</a>
-        <router-link to="/dan-ui">dan-ui</router-link>
+        <a href="/dan-ui/">dan-ui</a>
       </nav>
     </header>
 

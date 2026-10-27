@@ -15,7 +15,7 @@ npm run dev
 
 - `/`：Dandan Hub 产品中心
 - `/toolbox`：蛋蛋工具箱（便签下载 + OpenTrace 入口）
-- `/dan-ui`：dan-ui Vue 3 组件库介绍（npm / GitHub）
+- `/dan-ui/*`：Worker 反代到 `dan-ui` 文档站（VitePress）
 - `/pindou/*`：Worker 反代到独立 `pindou-web`
 - `/watermark/*`：反代到 `dandan-watermark`
 - `/caption/*`：反代到 `dandan-caption`
@@ -44,8 +44,9 @@ npm run dev
 | `CAPTION_ORIGIN` | `https://dandan-caption.pages.dev` |
 | `HOUSEKEEPING_ORIGIN` | `https://housekeeping-admin.pages.dev` |
 | `OPENTRACE_ORIGIN` | `https://opentrace-studio.pages.dev` |
+| `DANUI_ORIGIN` | `https://dan-ui.pages.dev` |
 
-（不要末尾 `/`。家政页不进产品中心，只通过 `https://dandanhub.vip/housekeeping/` 访问。OpenTrace 入口在 [工具箱](https://dandanhub.vip/toolbox)，正式地址为 `https://dandanhub.vip/opentrace/`。）
+（不要末尾 `/`。家政页不进产品中心，只通过 `https://dandanhub.vip/housekeeping/` 访问。OpenTrace 入口在 [工具箱](https://dandanhub.vip/toolbox)，正式地址为 `https://dandanhub.vip/opentrace/`。dan-ui 文档站正式地址为 `https://dandanhub.vip/dan-ui/`。）
 
 ### 新增 OpenTrace 子站时
 
@@ -54,6 +55,15 @@ npm run dev
 3. 记下 `https://xxxx.pages.dev`，写入本仓库 `wrangler.toml` 的 `OPENTRACE_ORIGIN`  
 4. 部署本 Hub（`npx wrangler deploy`）  
 5. 验证：`https://dandanhub.vip/toolbox` 入口 → `https://dandanhub.vip/opentrace/`
+
+### 新增 dan-ui 文档站时
+
+1. Cloudflare Pages 连接 [dan-ui](https://github.com/whr810012/dan-ui)  
+2. Build：`pnpm install && pnpm build && pnpm docs:build`，Output：`docs/.vitepress/dist`，Root：仓库根，Node：`20+`  
+3. 项目名建议 `dan-ui`（得到 `https://dan-ui.pages.dev`）  
+4. 确认 VitePress `base` 为 `/dan-ui/`  
+5. 写入本仓库 `wrangler.toml` 的 `DANUI_ORIGIN`，再部署 Hub  
+6. 验证：`https://dandanhub.vip/dan-ui/`
 
 4. 自定义域绑到该 Worker；阿里云 DNS CNAME 按控制台提示。
 5. 反代入口：[`workers/site.ts`](workers/site.ts)；静态资源：`dist`（见 [`wrangler.toml`](wrangler.toml)）。
